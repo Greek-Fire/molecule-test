@@ -1,0 +1,10 @@
+---
+# defaults file for test
+
+first_line: "Managed by Ansible"
+pkg_list:
+ - httpd
+ - firewalld
+svc_list:
+ - httpd
+ - firewalld

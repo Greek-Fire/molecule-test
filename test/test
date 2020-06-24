@@ -1,0 +1,21 @@
+--> [36mTest matrix[0m
+    
+└── default
+    └── verify
+    
+--> [36mScenario: 'default'[0m
+--> [36mAction: 'verify'[0m
+--> [36mRunning Ansible Verifier[0m
+    
+    PLAY [Verify] ******************************************************************
+    
+    TASK [Gathering Facts] *********************************************************
+    [0;32mok: [target][0m
+    
+    TASK [httpd test] **************************************************************
+    [0;32mok: [target][0m
+    
+    PLAY RECAP *********************************************************************
+    [0;32mtarget[0m                     : [0;32mok=2   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+    
+[32mVerifier completed successfully.[0m

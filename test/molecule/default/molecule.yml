@@ -1,0 +1,33 @@
+#---
+#dependency:
+#  name: galaxy
+#driver:
+#  name: docker
+#platforms:
+# - name: centos7
+#   image: milcom/centos7-systemd
+#   privileged: true
+#provisioner:
+#  name: ansible
+#verifier:
+#  name: ansible
+
+
+driver:
+  name: delegated
+  options:
+    managed: False
+    login_cmd_template: 'ssh {target}' 
+    ansible_connection_options:
+      ansible_connection: ssh
+platforms:
+  - name: target 
+    port: 22
+    user: molecule
+    password: redhat
+    become_method: sudo
+    become: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

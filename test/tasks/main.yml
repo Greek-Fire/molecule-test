@@ -1,0 +1,28 @@
+# tasks file for test
+---
+- name: "Ensure required packages are present"
+  yum:
+    name:  "{{ pkg_list }}" 
+    state: present
+  register: test
+
+- name: "Ensure latest index.html is present"
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  register: test1
+
+- name: "Ensure httpd service is started and enabled"
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items: "{{ svc_list }}"
+  register: test2
+
+- name: "Whitelist http in firewalld"
+  firewalld:
+    service: http
+    state: enabled
+    permanent: true
+  register: test3
