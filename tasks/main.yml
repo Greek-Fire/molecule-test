@@ -1,5 +1,9 @@
 # tasks file for test
 ---
+
+- name: test vars
+  debug:
+    msg: "{{ test }}"
 - name: "Ensure required packages are present"
   yum:
     name:  "{{ pkg_list }}" 
