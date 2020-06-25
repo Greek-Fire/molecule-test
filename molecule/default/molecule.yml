@@ -20,12 +20,12 @@ driver:
     login_cmd_template: 'ssh {target}' 
     ansible_connection_options:
       ansible_connection: ssh
+inventory:
+    group_vars:
+      all:
+        test: true
 platforms:
   - name: target
-    user: jenkins-slave
-    become: true
-    become_method: sudo
-    port: 22
 provisioner:
   name: ansible
 verifier:
