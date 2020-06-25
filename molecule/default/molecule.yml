@@ -23,9 +23,6 @@ driver:
 platforms:
   - name: target 
     port: 22
-    user: molecule
-    become_method: sudo
-    become: true
 provisioner:
   name: ansible
 verifier:
