@@ -21,7 +21,10 @@ driver:
     ansible_connection_options:
       ansible_connection: ssh
 platforms:
-  - name: target 
+  - name: target
+    user: jenkins-slave
+    become: true
+    become_method: sudo
     port: 22
 provisioner:
   name: ansible
