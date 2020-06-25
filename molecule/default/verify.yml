@@ -4,6 +4,7 @@
 - name: Verify
   hosts: all
   become: true
+  remote_user: jenkins-slave
   tasks:
   - name: httpd test 
     service:
@@ -14,5 +15,3 @@
   - name: pass test
     assert:
      that: test.changed == False
-    #when: test.changed == False
-
