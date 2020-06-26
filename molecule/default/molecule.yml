@@ -30,6 +30,6 @@ provisioner:
   name: ansible
   config_options:
     defaults:
-      callback_whitelist: profile_tasks
+      callback_whitelist: profile_tasks, json
 verifier:
   name: ansible
