@@ -31,6 +31,7 @@ provisioner:
   config_options:
     defaults:
       show_custom_stats: true
-      callback_whitelist: json
+      callback_whitelist: profile_tasks
+      stdout_callback: json
 verifier:
   name: ansible
