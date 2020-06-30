@@ -4,6 +4,7 @@
 - name: Verify
   hosts: all
   become: true
+  gather_facts: False
   remote_user: jenkins-slave
   tasks:
   - name: httpd test 
