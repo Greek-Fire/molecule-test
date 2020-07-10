@@ -1,0 +1,4 @@
+- name: 'molecule-test'
+  src:  'git@github.com:TheRedGreek/molecule-test.git'
+  scm:  'git'
+  version: 'master'

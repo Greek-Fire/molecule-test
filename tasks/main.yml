@@ -1,0 +1,3 @@
+- name: include this role
+  include_role:
+    name: molecule-test
