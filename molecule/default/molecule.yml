@@ -17,7 +17,7 @@ driver:
   name: delegated
   options:
     managed: False
-    login_cmd_template: 'ssh {target}' 
+    login_cmd_template: 'ssh {localhost}' 
     ansible_connection_options:
       ansible_connection: ssh
 inventory:
@@ -25,7 +25,7 @@ inventory:
       all:
         test: true
 platforms:
-  - name: target
+  - name: localhost
 provisioner:
   name: ansible
   env:
