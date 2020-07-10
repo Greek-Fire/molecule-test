@@ -28,7 +28,7 @@ platforms:
   - name: target
 provisioner:
   name: ansible
-    env:
+  env:
     ANSIBLE_ROLES_PATH: $HOME/workspaces/molecule-test2/
   config_options:
     defaults:
