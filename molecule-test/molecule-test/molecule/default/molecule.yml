@@ -1,0 +1,36 @@
+#---
+#dependency:
+#  name: galaxy
+#driver:
+#  name: docker
+#platforms:
+# - name: centos7
+#   image: milcom/centos7-systemd
+#   privileged: true
+#provisioner:
+#  name: ansible
+#verifier:
+#  name: ansible
+
+
+driver:
+  name: delegated
+  options:
+    managed: False
+    login_cmd_template: 'ssh {target}' 
+    ansible_connection_options:
+      ansible_connection: ssh
+inventory:
+    group_vars:
+      all:
+        test: true
+platforms:
+  - name: target
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks
+      stdout_callback: json
+verifier:
+  name: ansible
