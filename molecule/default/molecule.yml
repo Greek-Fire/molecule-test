@@ -29,7 +29,7 @@ platforms:
 provisioner:
   name: ansible
   env:
-    ANSIBLE_ROLES_PATH: /home/jenkins-slave/workspaces/molecule-test2/
+    ANSIBLE_ROLES_PATH: ../../
   config_options:
     defaults:
       callback_whitelist: profile_tasks
