@@ -28,8 +28,8 @@ platforms:
   - name: localhost
 provisioner:
   name: ansible
-  env:
-    ANSIBLE_ROLES_PATH: ../../
+#  env:
+#    ANSIBLE_ROLES_PATH: ../../
   config_options:
     defaults:
       callback_whitelist: profile_tasks
