@@ -4,6 +4,32 @@
 #driver:
 #  name: docker
 #platforms:
+#  - name: instance
+#    image: rhel7:7.8
+#    command: /sbin/init
+#    privileged: True
+#    pre_build_image: true
+#    network_mode: host
+#    tmpfs:
+#      - /run
+#      - /tmp
+#    volumes:
+#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+#    capabilities:
+#      - SYS_ADMIN
+#    dns_serers:
+#      - 192.168.89.2
+#provisioner:
+#  name: ansible
+#verifier:
+#  name: ansible
+  
+#---
+#dependency:
+#  name: galaxy
+#driver:
+#  name: docker
+#platforms:
 # - name: centos7
 #   image: milcom/centos7-systemd
 #   privileged: true
