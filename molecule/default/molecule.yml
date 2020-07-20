@@ -1,28 +1,28 @@
-#---
-#dependency:
-#  name: galaxy
-#driver:
-#  name: docker
-#platforms:
-#  - name: instance
-#    image: rhel7:7.8
-#    command: /sbin/init
-#    privileged: True
-#    pre_build_image: true
-#    network_mode: host
-#    tmpfs:
-#      - /run
-#      - /tmp
-#    volumes:
-#      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-#    capabilities:
-#      - SYS_ADMIN
-#    dns_serers:
-#      - 192.168.89.2
-#provisioner:
-#  name: ansible
-#verifier:
-#  name: ansible
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: bob:7.8
+    command: /sbin/init
+    privileged: True
+    pre_build_image: true
+    network_mode: host
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    capabilities:
+      - SYS_ADMIN
+    dns_serers:
+      - 192.168.89.2
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
   
 #---
 #dependency:
@@ -39,26 +39,26 @@
 #  name: ansible
 
 
-driver:
-  name: delegated
-  options:
-    managed: False
-    login_cmd_template: 'ssh {localhost}' 
-    ansible_connection_options:
-      ansible_connection: ssh
-inventory:
-    group_vars:
-      all:
-        test: true
-platforms:
-  - name: localhost
-provisioner:
-  name: ansible
+#driver:
+#  name: delegated
+#  options:
+#    managed: False
+#    login_cmd_template: 'ssh {localhost}' 
+#    ansible_connection_options:
+#      ansible_connection: ssh
+#inventory:
+#    group_vars:
+#      all:
+#        test: true
+#platforms:
+#  - name: localhost
+#provisioner:
+#  name: ansible
 #  env:
 #    ANSIBLE_ROLES_PATH: ../../
-  config_options:
-    defaults:
-      callback_whitelist: profile_tasks
-      stdout_callback: json
-verifier:
-  name: ansible
+#  config_options:
+#    defaults:
+#      callback_whitelist: profile_tasks
+#      stdout_callback: json
+#verifier:
+#  name: ansible
