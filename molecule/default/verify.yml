@@ -7,6 +7,14 @@
   gather_facts: False
   remote_user: jenkins-slave
   tasks:
+  
+  - name: file content test
+    stat:
+      path: /tmp/bob
+      checksum_algorithm: sha1
+      get_checksum: yes
+    register: sha
+    
   - name: httpd test 
     service:
       name: httpd
@@ -16,3 +24,4 @@
   - name: pass test
     assert:
      that: test.changed == False
+     that: sha.stat.checksum == 7b64f0f207214f9894a2f4d08a95e57f3c773e72
