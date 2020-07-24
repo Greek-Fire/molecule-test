@@ -31,8 +31,12 @@
       name: httpd
       state: started
     register: test
+ 
+  - name: check for package
+    package_facts:
+      manager: auto
 
   - name: httpd test
     assert:
       that: test.changed == False
-      fail_msg: httpd tasks did not start the service
+      that: ('wget' and 'telnet') in ansible_facts.packages
