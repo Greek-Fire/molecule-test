@@ -8,23 +8,31 @@
   remote_user: jenkins-slave
   tasks:
   
-  - name: file content/ownership/permission/existance test
+  - name: file content/ownership/permission/existance 
     stat:
       path: /tmp/bob
       checksum_algorithm: sha1
       get_checksum: yes
     register: sha
+  
+  - name: does file exist test?
+    assert:
+      that: sha.stat.exist != false
+      fail_msg: file does not exist
+
+  - name: file content/ownership/permission/ test
+    assert:  
+      that: sha.stat.checksum == 7b64f0f207214f9894a2f4d08a95e57f3c773e72
+      that: sha.stat.pw_name == 'root'
+      that: sha.stat.gr_name == 'root'      
     
-  - name: httpd test 
+  - name: httpd  
     service:
       name: httpd
       state: started
     register: test
 
-  - name: pass test
+  - name: httpd test
     assert:
-     that: test.changed == False
-     that: sha.stat.checksum == 7b64f0f207214f9894a2f4d08a95e57f3c773e72
-     that: sha.stat != false
-     that: sha.stat.pw_name == 'root'
-     that: sha.stat.gr_name == 'root'
+      that: test.changed == False
+      fail_msg: httpd tasks did not start the service
